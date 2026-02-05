@@ -1,0 +1,57 @@
+#include <iostream>
+#include <bitset>
+using namespace std;
+
+// This function converts an integer to binary
+void intToBinary(int num) {
+    bitset<32> binary(num);
+    cout << "Binary (int): " << binary << endl;
+}
+
+// This function converts a character to binary
+void charToBinary(char ch) {
+    bitset<8> binary(ch);
+    cout << "Binary (char): " << binary << endl;
+}
+
+// This function converts a float to binary
+void floatToBinary(float num) {
+    unsigned int* ptr = (unsigned int*)&num;
+    bitset<32> binary(*ptr);
+    cout << "Binary (float - IEEE 754): " << binary << endl;
+}
+
+int main() {
+    int choice;
+
+    cout << "Choose data type to convert to binary:\n";
+    cout << "1. Char\n";
+    cout << "2. Int\n";
+    cout << "3. Float\n";
+    cout << "Enter choice: ";
+    cin >> choice;
+
+    if (choice == 1) {
+        char ch;
+        cout << "Enter a character: ";
+        cin >> ch;
+        charToBinary(ch);
+    }
+    else if (choice == 2) {
+        int num;
+        cout << "Enter an integer: ";
+        cin >> num;
+        intToBinary(num);
+    }
+    else if (choice == 3) {
+        float num;
+        cout << "Enter a float: ";
+        cin >> num;
+        floatToBinary(num);
+    }
+    else {
+        cout << "Invalid choice." << endl;
+    }
+
+    return 0;
+}
